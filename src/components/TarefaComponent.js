@@ -1,3 +1,4 @@
+import moment from 'moment'
 import TarefaService from '../services/TarefaService'
 
 export default {
@@ -52,5 +53,15 @@ export default {
                 })
             }
         }
-    }    
+    },
+    
+    filters: {
+        filtroData(valor) {
+            if (valor) return moment(String(valor)).format('DD/MM/YYYY')
+        },
+        
+        filtroBoolean(valor) {
+            return (valor? 'Sim' : 'Não')
+        }
+    }
 }

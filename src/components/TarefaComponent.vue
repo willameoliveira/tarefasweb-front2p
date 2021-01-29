@@ -9,7 +9,7 @@
         <form @submit.prevent="salvar">
 
           <label>Descrição</label>
-          <input type="text" placeholder="Descrição" v-model="tarefa.descricao">
+          <input type="text" placeholder="Descrição" v-model="tarefa.descricao" required>
           
           <p>
             <label>
@@ -51,9 +51,9 @@
             <tr v-for="tarefa in tarefas" :key="tarefa.id">
 
                 <td>{{tarefa.descricao}}</td>
-                <td>{{tarefa.finalizada}}</td>
-                <td>{{tarefa.dataFinalizacao}}</td>
-                <td>{{tarefa.imagem}}</td>
+                <td>{{tarefa.finalizada | filtroBoolean}}</td>
+                <td>{{tarefa.dataFinalizacao | filtroData}}</td>
+                <td><img src="../assets/tarefasestudo.png" /></td>
                 <td>
                 <button @click="editar(tarefa)" class="waves-effect btn-small blue darken-1"><i class="material-icons">create</i></button>
                 <button @click="remover(tarefa)" class="waves-effect btn-small red darken-1"><i class="material-icons">delete_sweep</i></button>
@@ -69,6 +69,8 @@
 
 <script src="./TarefaComponent.js"></script>
 
-<style>
-
+<style scoped>
+form {
+    margin-left: 5px;
+}
 </style>
